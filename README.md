@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/zaxos/guacamole-ansible-role.svg?branch=master)](https://travis-ci.org/zaxos/guacamole-ansible-role)
 
 guacamole-ansible-role
 ==================
