@@ -33,9 +33,9 @@ Role Variables
 --------------
 Some variables that require review:
 - `guacamole_mysql_root_password`: Password for root user to be created for local mariadb installation. 
-- `guacamole_db_name:`: Database name used by guacamole. Default is "guac_db".
-- `guacamole_db_username:` Database user used by guacamole. Default is "guac_db_usr".
-- `guacamole_db_password:` Database user password used by guacamole. Default is "guacdbpassword".
+- `guacamole_db_name`: Database name used by guacamole. Default is "guac_db".
+- `guacamole_db_username`: Database user used by guacamole. Default is "guac_db_usr".
+- `guacamole_db_password`: Database user password used by guacamole. Default is "guacdbpassword".
 
 Some defaults (probably not requiring tampering):   
 - `guacamole_temp_path`: /tmp/guactempdir   
