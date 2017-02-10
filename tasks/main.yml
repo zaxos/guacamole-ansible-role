@@ -1,0 +1,44 @@
+---
+# tasks file for guacamole-ansible-role
+
+- name: Install packages
+  include: install-packages-redhat.yml
+
+- name: Install MariaDB
+  include: install-mariadb-redhat.yml
+
+- name: Create temp directory
+  file:
+    path: '{{ guacamole_temp_path }}'
+    state: directory
+  changed_when: False
+
+- name: Install guacamole server
+  include: install-guacamole-server.yml
+
+- name: Install guacamole client
+  include: install-guacamole-client.yml
+
+- name: Configure database
+  include: configure-database.yml
+
+- name: Configure guacamole
+  include: configure-guacamole.yml
+
+- name: Start and enable guacd on startup
+  service: 
+    name: guacd
+    state: started
+    enabled: yes
+
+- name: Start and enable tomcat on startup
+  service: 
+    name: tomcat
+    state: started
+    enabled: yes
+
+- name: Clean up temporary files
+  file:
+    path: '{{ guacamole_temp_path }}'
+    state: absent
+  changed_when: False

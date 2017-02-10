@@ -1,0 +1,44 @@
+---
+# defaults file for guacamole-ansible-role
+
+guacamole_mysql_root_password: MySqLr00tpAss
+
+guacamole_db_name: guac_db
+guacamole_db_username: guac_db_usr
+guacamole_db_password: guacdbpassword
+
+
+guacamole_packages_EL:
+  - {package: "cairo-devel"}
+  - {package: "freerdp-devel"}
+  - {package: "java-1.8.0-openjdk"}
+  - {package: "libguac"}
+  - {package: "libguac-client-rdp"}
+  - {package: "libguac-client-ssh"}
+  - {package: "libguac-client-vnc"}
+  - {package: "libjpeg-turbo-devel"}
+  - {package: "libpng-devel"}
+  - {package: "libssh2-devel"}
+  - {package: "libtelnet-devel"}
+  - {package: "libvncserver-devel"}
+  - {package: "libwebp-devel"}
+  - {package: "libvorbis-devel"}
+  - {package: "maven"}
+  - {package: "openssl-devel"}
+  - {package: "pango-devel"}
+  - {package: "pulseaudio-libs-devel"}
+  - {package: "terminus-fonts"}
+  - {package: "tomcat"}
+  - {package: "tomcat-admin-webapps"}
+  - {package: "tomcat-webapps"}
+  - {package: "uuid-devel"}
+  - {package: "freerdp"}
+  - {package: "ffmpeg-devel"}
+  - {package: "MySQL-python"}
+  - {package: "autoconf"}
+  - {package: "automake"}
+  - {package: "gcc"}
+  - {package: "git"}
+  - {package: "libtool"}
+
+guacamole_temp_path: /tmp/guactempdir

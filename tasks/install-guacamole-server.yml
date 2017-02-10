@@ -1,0 +1,26 @@
+- name: Check if guacamole server is installed
+  stat:
+    path: /usr/local/sbin/guacd
+  register: server_is_installed
+
+- name: Git clone guacamole server
+  git:
+    repo: https://github.com/apache/incubator-guacamole-server.git
+    dest: '{{ guacamole_temp_path }}/server'
+    clone: yes
+  when: server_is_installed.stat.exists == False
+
+- name: Build from source and install guacamole server (1/2)
+  shell: '{{ item }}'
+  args:
+    chdir: '{{ guacamole_temp_path }}/server'
+    creates: /usr/local/sbin/guacd
+  register: server_installed
+  with_items: ["autoreconf -fi", "./configure --with-init-dir=/etc/init.d", "make", "make install" ]
+  when: server_is_installed.stat.exists == False
+
+- name: Build from source and install guacamole server (2/2)
+  shell: ldconfig
+  args:
+    chdir: '{{ guacamole_temp_path }}/server'
+  when: server_installed|changed

@@ -1,0 +1,8 @@
+- name: Configure guacamole (1/2)
+  template: src=guacamole.properties.j2 dest=/etc/guacamole/guacamole.properties
+
+- name: Configure guacamole (2/2)
+  file:
+    src: /etc/guacamole/guacamole.properties
+    dest: /usr/share/tomcat/.guacamole/guacamole.properties
+    state: link

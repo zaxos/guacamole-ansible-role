@@ -1,0 +1,16 @@
+- name: Install MariaDB
+  yum:
+    name: mariadb-server
+    state: present
+  register: mariadb_fresh_installation
+
+- name: Make sure MariaDB service is running
+  service:
+    name: mariadb
+    state: started
+    enabled: yes
+  when: mariadb_fresh_installation|changed
+
+- name: Configure MariaDB root user
+  shell: mysqladmin -u root password {{ guacamole_mysql_root_password }}
+  when: mariadb_fresh_installation|changed
