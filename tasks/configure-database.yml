@@ -13,7 +13,7 @@
     login_password: '{{ guacamole_mysql_root_password }}'
     name: '{{ guacamole_db_username }}'
     password: '{{ guacamole_db_password }}'
-    priv: 'guacdb.*:SELECT,INSERT,UPDATE,DELETE'
+    priv: '{{ guacamole_db_name }}.*:SELECT,INSERT,UPDATE,DELETE'
   when: db_created|changed
 
 - name: Create database schema
