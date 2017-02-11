@@ -26,13 +26,14 @@
   include: configure-guacamole.yml
 
 - name: Start and enable guacd on startup
-  service: 
+  systemd: 
     name: guacd
     state: started
     enabled: yes
+    daemon_reload: yes
 
 - name: Start and enable tomcat on startup
-  service: 
+  systemd: 
     name: tomcat
     state: started
     enabled: yes

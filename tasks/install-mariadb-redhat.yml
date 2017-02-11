@@ -5,7 +5,7 @@
   register: mariadb_fresh_installation
 
 - name: Make sure MariaDB service is running
-  service:
+  systemd:
     name: mariadb
     state: started
     enabled: yes
