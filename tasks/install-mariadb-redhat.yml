@@ -9,7 +9,6 @@
     name: mariadb
     state: started
     enabled: yes
-  when: mariadb_fresh_installation|changed
 
 - name: Configure MariaDB root user
   shell: mysqladmin -u root password {{ guacamole_mysql_root_password }}
