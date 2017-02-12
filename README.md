@@ -32,7 +32,7 @@ Role Variables
 --------------
 Some variables that require review:
 - `guacamole_version`: Guacamole version to be installed. Default is "0.9.11-incubating", which is the latest release.
-- `guacamole_mysql_root_password`: Password for root user to be created for local mariadb installation. For existing installation, just enter the password for user "root".
+- `guacamole_mysql_root_password`: Password for root user to be created for local mariadb installation. For existing installation, just enter the password of user "root".
 - `guacamole_db_name`: Database name used by guacamole. Default is "guac_db".
 - `guacamole_db_username`: Database user used by guacamole. Default is "guac_db_usr".
 - `guacamole_db_password`: Database user password used by guacamole. Default is "guacdbpassword".
