@@ -32,12 +32,6 @@
     enabled: yes
     daemon_reload: yes
 
-- name: Start and enable tomcat on startup
-  systemd: 
-    name: tomcat
-    state: started
-    enabled: yes
-
 - name: Clean up temporary files
   file:
     path: '{{ guacamole_temp_path }}'

@@ -5,7 +5,7 @@
     name: '{{ guacamole_db_name }}'
     encoding: utf8
     state: present
-  register: db_created
+#  register: db_created
 
 - name: Create database user
   mysql_user:
@@ -13,23 +13,42 @@
     login_password: '{{ guacamole_mysql_root_password }}'
     name: '{{ guacamole_db_username }}'
     password: '{{ guacamole_db_password }}'
-    priv: '{{ guacamole_db_name }}.*:SELECT,INSERT,UPDATE,DELETE'
-  when: db_created|changed
+    priv: '{{ guacamole_db_name }}.*:ALL'
+#  when: db_created|changed
+
+- name: Check database schema
+  shell: >
+    mysql --user={{ guacamole_db_username }} \
+    --password={{ guacamole_db_password }} \
+    {{ guacamole_db_name }} \
+    --host=localhost \
+    --execute="select * from guacamole_system_permission"
+  register: check_table_exists
+  failed_when: check_table_exists.stderr.find('guacamole_system_permission\' doesn\'t exist') == -1 and check_table_exists.stderr != ""
+  changed_when: False
+
+- name: Make sure guacamole-auth-jdbc-mysql is downloaded
+  unarchive:
+    src: 'http://apache.mirrors.tds.net/incubator/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
+    remote_src: yes
+    dest: '{{ guacamole_temp_path }}'
+    creates: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}/mysql/guacamole-auth-jdbc-mysql-{{ guacamole_version }}.jar'
+  when: check_table_exists.stderr.find('guacamole_system_permission\' doesn\'t exist') != -1
 
 - name: Create database schema
   mysql_db:
-    login_user: root
-    login_password: '{{ guacamole_mysql_root_password }}'
+    login_user: '{{ guacamole_db_username }}'
+    login_password: '{{ guacamole_db_password }}'
     name: '{{ guacamole_db_name }}'
     state: import
-    target: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-0.9.11-incubating/mysql/schema/001-create-schema.sql'
-  when: db_created|changed
+    target: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}/mysql/schema/001-create-schema.sql'
+  when: check_table_exists.stderr.find('guacamole_system_permission\' doesn\'t exist') != -1
 
 - name: Create guacamole admin user
   mysql_db:
-    login_user: root
-    login_password: '{{ guacamole_mysql_root_password }}'
+    login_user: '{{ guacamole_db_username }}'
+    login_password: '{{ guacamole_db_password }}'
     name: '{{ guacamole_db_name }}'
     state: import
-    target: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-0.9.11-incubating/mysql/schema/002-create-admin-user.sql'
-  when: db_created|changed
+    target: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}/mysql/schema/002-create-admin-user.sql'
+  when: check_table_exists.stderr.find('guacamole_system_permission\' doesn\'t exist') != -1

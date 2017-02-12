@@ -8,6 +8,7 @@
     repo: https://github.com/apache/incubator-guacamole-server.git
     dest: '{{ guacamole_temp_path }}/server'
     clone: yes
+    version: 'tags/{{ guacamole_version }}'
   when: server_is_installed.stat.exists == False
 
 - name: Build from source and install guacamole server (1/2)

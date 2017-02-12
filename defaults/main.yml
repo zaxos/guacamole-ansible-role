@@ -1,12 +1,12 @@
 ---
 # defaults file for guacamole-ansible-role
 
+guacamole_version: 0.9.11-incubating
 guacamole_mysql_root_password: MySqLr00tpAss
 
 guacamole_db_name: guac_db
 guacamole_db_username: guac_db_usr
 guacamole_db_password: guacdbpassword
-
 
 guacamole_packages_EL:
   - {package: "cairo-devel"}

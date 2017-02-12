@@ -1,2 +1,8 @@
 ---
 # handlers file for guacamole-ansible-role
+
+- name: restart tomcat
+  systemd:
+    name: tomcat
+    state: restarted
+    enabled: yes
