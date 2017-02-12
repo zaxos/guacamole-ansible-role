@@ -5,7 +5,6 @@
     name: '{{ guacamole_db_name }}'
     encoding: utf8
     state: present
-#  register: db_created
 
 - name: Create database user
   mysql_user:
@@ -14,7 +13,6 @@
     name: '{{ guacamole_db_username }}'
     password: '{{ guacamole_db_password }}'
     priv: '{{ guacamole_db_name }}.*:ALL'
-#  when: db_created|changed
 
 - name: Check database schema
   shell: >
