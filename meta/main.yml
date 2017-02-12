@@ -1,6 +1,6 @@
 galaxy_info:
   author: zaxos
-  description: Ansible role to install and configure Guacamole
+  description: Ansible role to install and configure Guacamole with MySQL/MariaDB
 
   license: GPLv2
 

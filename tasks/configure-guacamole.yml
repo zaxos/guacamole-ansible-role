@@ -1,5 +1,7 @@
 - name: Configure guacamole (1/2)
-  template: src=guacamole.properties.j2 dest=/etc/guacamole/guacamole.properties
+  template:
+    src: guacamole.properties.j2 
+    dest: /etc/guacamole/guacamole.properties
   notify: restart tomcat
 
 - name: Configure guacamole (2/2)
