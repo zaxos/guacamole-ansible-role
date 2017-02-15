@@ -3,6 +3,7 @@
 
 - name: Install packages
   include: install-packages-redhat.yml
+  when: ansible_os_family == "RedHat"
 
 - name: Install MariaDB
   include: install-mariadb-redhat.yml

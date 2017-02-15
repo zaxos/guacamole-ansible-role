@@ -4,6 +4,7 @@
     login_password: '{{ guacamole_mysql_root_password }}'
     name: '{{ guacamole_db_name }}'
     encoding: utf8
+    collation: utf8_general_ci
     state: present
 
 - name: Create database user
