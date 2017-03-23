@@ -1,3 +1,6 @@
+---
+# tasks file for guacamole-ansible-role
+
 - name: Check if guacamole server is installed
   stat:
     path: /usr/local/sbin/guacd

@@ -1,0 +1,28 @@
+---
+# tasks file for guacamole-ansible-role
+
+- name: Remove anonymous users
+  mysql_user:
+    login_user: root
+    login_password: '{{ guacamole_mysql_root_password }}'
+    user: ""
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - localhost
+    - "{{ ansible_fqdn }}"
+
+- name: Restrict root user access 
+  mysql_user:
+    login_user: root
+    login_password: '{{ guacamole_mysql_root_password }}'
+    user: "root"
+    host: "{{ ansible_fqdn }}"
+    state: absent
+
+- name: Remove test database
+  mysql_db:
+    login_user: root
+    login_password: '{{ guacamole_mysql_root_password }}'
+    db: test
+    state: absent

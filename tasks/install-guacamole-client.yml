@@ -1,3 +1,6 @@
+---
+# tasks file for guacamole-ansible-role
+
 - name: Check if guacamole client is installed
   stat:
     path: /var/lib/tomcat/webapps/guacamole.war

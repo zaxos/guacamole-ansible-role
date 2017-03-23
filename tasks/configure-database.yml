@@ -1,3 +1,6 @@
+---
+# tasks file for guacamole-ansible-role
+
 - name: Create database
   mysql_db:
     login_user: root

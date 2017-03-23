@@ -9,7 +9,7 @@ Ansible role to install and configure Guacamole with MySQL/MariaDB.
 Requirements
 ------------
 * centos/rhel 7
-* ansible >=2.2
+* ansible >= 2.2
 * selinux disabled
 
 Installation
@@ -38,11 +38,13 @@ Some variables that require review:
 - `guacamole_db_password`: Database user password used by guacamole. Default is "guacdbpassword".
 
 Some defaults (probably not requiring tampering):
-- `guacamole_temp_path`: /tmp/guactempdir   
+- `guacamole_mysql_secure_installation`: True  
+Performs equivalent actions of "mysql_secure_installation" command.
+- `guacamole_temp_path`: /tmp/guactempdir  
 Temporary directory used for deployment. It will be deleted afterwards.
 
 Usage
 -----
-After installation, point your browser to: `http://IP_or_FQDN:8080/guacamole`   
-Default username and password is: `guacadmin`   
+After installation, point your browser to: `http://IP_or_FQDN:8080/guacamole`  
+Default username and password is: `guacadmin`  
 *(Don't forget to change it)*
