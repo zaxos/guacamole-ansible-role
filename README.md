@@ -23,6 +23,7 @@ Example Playbook
 ```yaml
     - hosts: servers
       vars:
+        guacamole_version: 0.9.11-incubating
         guacamole_mysql_root_password: MY-PASSWORD-HERE
       roles:
         - role: zaxos.guacamole-ansible-role
