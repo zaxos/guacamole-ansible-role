@@ -48,21 +48,21 @@
 
 - name: Check if mysql-connector-java is installed
   stat:
-    path: /usr/share/tomcat/.guacamole/lib/mysql-connector-java-5.1.40-bin.jar
+    path: /usr/share/tomcat/.guacamole/lib/mysql-connector-java-5.1.42-bin.jar
   register: mysql_connector_is_installed
 
 - name: Download and unarchive mysql-connector-java
   unarchive:
-    src: http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.40.tar.gz
+    src: http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
     remote_src: yes
     dest: '{{ guacamole_temp_path }}'
-    creates: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar'
+    creates: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar'
   when: mysql_connector_is_installed.stat.exists == False
 
 - name: Install mysql-connector-java
   copy:
-    src: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.40/mysql-connector-java-5.1.40-bin.jar'
-    dest: /usr/share/tomcat/.guacamole/lib/mysql-connector-java-5.1.40-bin.jar
+    src: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar'
+    dest: /usr/share/tomcat/.guacamole/lib/mysql-connector-java-5.1.42-bin.jar
     owner: root
     group: tomcat
     mode: 0440
