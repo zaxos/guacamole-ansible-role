@@ -28,9 +28,16 @@
     path: /usr/share/tomcat/.guacamole/extensions/guacamole-auth-jdbc-mysql-{{ guacamole_version }}.jar
   register: auth_jdbc_is_installed
 
-- name: Download and unarchive guacamole-auth-jdbc-mysql
+- name: Download guacamole-auth-jdbc-mysql
+  get_url:
+    url: 'http://apache.mirrors.tds.net/incubator/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
+    dest: '{{ guacamole_temp_path }}'
+    timeout: 120
+  when: auth_jdbc_is_installed.stat.exists == False
+
+- name: Unarchive guacamole-auth-jdbc-mysql
   unarchive:
-    src: 'http://apache.mirrors.tds.net/incubator/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
+    src: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
     remote_src: yes
     dest: '{{ guacamole_temp_path }}'
     creates: '{{ guacamole_temp_path }}/guacamole-auth-jdbc-{{ guacamole_version }}/mysql/guacamole-auth-jdbc-mysql-{{ guacamole_version }}.jar'
@@ -51,9 +58,16 @@
     path: /usr/share/tomcat/.guacamole/lib/mysql-connector-java-5.1.42-bin.jar
   register: mysql_connector_is_installed
 
-- name: Download and unarchive mysql-connector-java
+- name: Download mysql-connector-java
+  get_url:
+    url: 'http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz'
+    dest: '{{ guacamole_temp_path }}'
+    timeout: 120
+  when: mysql_connector_is_installed.stat.exists == False
+
+- name: Unarchive mysql-connector-java
   unarchive:
-    src: http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz
+    src: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.42.tar.gz'
     remote_src: yes
     dest: '{{ guacamole_temp_path }}'
     creates: '{{ guacamole_temp_path }}/mysql-connector-java-5.1.42/mysql-connector-java-5.1.42-bin.jar'
