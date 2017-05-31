@@ -9,6 +9,8 @@ guacamole_db_name: guac_db
 guacamole_db_username: guac_db_usr
 guacamole_db_password: guacdbpassword
 
+guacamole_configure_firewalld: False
+
 guacamole_packages_EL:
   - {package: "cairo-devel"}
   - {package: "freerdp-devel"}

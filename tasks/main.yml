@@ -26,6 +26,10 @@
 - name: Configure guacamole
   include: configure-guacamole.yml
 
+- name: Configure firewalld
+  include: configure-firewalld.yml
+  when: guacamole_configure_firewalld
+
 - name: Start and enable guacd on startup
   systemd: 
     name: guacd

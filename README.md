@@ -37,6 +37,7 @@ Some variables that require review:
 - `guacamole_db_name`: Database name used by guacamole. Default is "guac_db".
 - `guacamole_db_username`: Database user used by guacamole. Default is "guac_db_usr".
 - `guacamole_db_password`: Database user password used by guacamole. Default is "guacdbpassword".
+- `guacamole_configure_firewalld`: If set to "True", firewalld will be installed and properly configured. Default value is "False".
 
 Some defaults (probably not requiring tampering):
 - `guacamole_mysql_secure_installation`: True  
