@@ -23,7 +23,7 @@ Example Playbook
 ```yaml
     - hosts: servers
       vars:
-        guacamole_version: 0.9.12-incubating
+        guacamole_version: 0.9.13-incubating
         guacamole_mysql_root_password: MY-PASSWORD-HERE
       roles:
         - role: zaxos.guacamole-ansible-role
@@ -32,7 +32,7 @@ Example Playbook
 Role Variables
 --------------
 Some variables that require review:
-- `guacamole_version`: Guacamole version to be installed. Default is "0.9.11-incubating". Currently, latest version is "0.9.12-incubating".
+- `guacamole_version`: Guacamole version to be installed. Currently, latest version is "0.9.13-incubating".
 - `guacamole_mysql_root_password`: Password for root user to be created for local mariadb installation. For existing installation, just enter the password of user "root".
 - `guacamole_db_name`: Database name used by guacamole. Default is "guac_db".
 - `guacamole_db_username`: Database user used by guacamole. Default is "guac_db_usr".
