@@ -45,3 +45,6 @@ guacamole_packages_EL:
   - {package: "libtool"}
 
 guacamole_temp_path: /tmp/guactempdir
+
+epel_url: "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+epel_key: "/etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7"
