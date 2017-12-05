@@ -10,6 +10,18 @@
   rpm_key:
     key: "{{ epel_key }}"
 
+- name: Check if RHEL optional rpms repository is enabled
+  command: subscription-manager repos --list-enabled
+  register: repos_enabled
+  changed_when: False
+  when: "ansible_distribution == 'RedHat'"
+
+- name: Enable RHEL optional rpms repository
+  command: subscription-manager repos --enable rhel-7-server-optional-rpms
+  when: >
+    ansible_distribution == "RedHat" and
+    "rhel-7-server-optional-rpms" not in repos_enabled.stdout
+
 - name: Add necessary repository
   yum:
     name: http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
