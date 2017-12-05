@@ -11,6 +11,9 @@ guacamole_db_password: guacdbpassword
 
 guacamole_configure_firewalld: False
 
+guacamole_auth_jdbc_url: "https://archive.apache.org/dist/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz"
+guacamole_mysql_connector_java_url: "http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz"
+
 guacamole_packages_EL:
   - {package: "cairo-devel"}
   - {package: "freerdp-devel"}

@@ -30,7 +30,7 @@
 
 - name: Download guacamole-auth-jdbc-mysql
   get_url:
-    url: 'http://apache.mirrors.tds.net/incubator/guacamole/{{ guacamole_version }}/binary/guacamole-auth-jdbc-{{ guacamole_version }}.tar.gz'
+    url: '{{ guacamole_auth_jdbc_url }}'
     dest: '{{ guacamole_temp_path }}'
     timeout: 120
   when: auth_jdbc_is_installed.stat.exists == False
@@ -60,7 +60,7 @@
 
 - name: Download mysql-connector-java
   get_url:
-    url: 'http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz'
+    url: '{{ guacamole_mysql_connector_java_url }}'
     dest: '{{ guacamole_temp_path }}'
     timeout: 120
   when: mysql_connector_is_installed.stat.exists == False
