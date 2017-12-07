@@ -15,37 +15,37 @@ guacamole_auth_jdbc_url: "https://archive.apache.org/dist/guacamole/{{ guacamole
 guacamole_mysql_connector_java_url: "http://download.softagency.net/MySQL/Downloads/Connector-J/mysql-connector-java-5.1.42.tar.gz"
 
 guacamole_packages_EL:
-  - {package: "cairo-devel"}
-  - {package: "freerdp-devel"}
-  - {package: "java-1.8.0-openjdk"}
-  - {package: "libguac"}
-  - {package: "libguac-client-rdp"}
-  - {package: "libguac-client-ssh"}
-  - {package: "libguac-client-vnc"}
-  - {package: "libjpeg-turbo-devel"}
-  - {package: "libpng-devel"}
-  - {package: "libssh2-devel"}
-  - {package: "libtelnet-devel"}
-  - {package: "libvncserver-devel"}
-  - {package: "libwebp-devel"}
-  - {package: "libvorbis-devel"}
-  - {package: "maven"}
-  - {package: "openssl-devel"}
-  - {package: "pango-devel"}
-  - {package: "pulseaudio-libs-devel"}
-  - {package: "terminus-fonts"}
-  - {package: "tomcat"}
-  - {package: "tomcat-admin-webapps"}
-  - {package: "tomcat-webapps"}
-  - {package: "uuid-devel"}
-  - {package: "freerdp"}
-  - {package: "ffmpeg-devel"}
-  - {package: "MySQL-python"}
-  - {package: "autoconf"}
-  - {package: "automake"}
-  - {package: "gcc"}
-  - {package: "git"}
-  - {package: "libtool"}
+  - "cairo-devel"
+  - "freerdp-devel"
+  - "java-1.8.0-openjdk"
+  - "libguac"
+  - "libguac-client-rdp"
+  - "libguac-client-ssh"
+  - "libguac-client-vnc"
+  - "libjpeg-turbo-devel"
+  - "libpng-devel"
+  - "libssh2-devel"
+  - "libtelnet-devel"
+  - "libvncserver-devel"
+  - "libwebp-devel"
+  - "libvorbis-devel"
+  - "maven"
+  - "openssl-devel"
+  - "pango-devel"
+  - "pulseaudio-libs-devel"
+  - "terminus-fonts"
+  - "tomcat"
+  - "tomcat-admin-webapps"
+  - "tomcat-webapps"
+  - "uuid-devel"
+  - "freerdp"
+  - "ffmpeg-devel"
+  - "MySQL-python"
+  - "autoconf"
+  - "automake"
+  - "gcc"
+  - "git"
+  - "libtool"
 
 guacamole_temp_path: /tmp/guactempdir
 

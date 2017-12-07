@@ -29,6 +29,6 @@
 
 - name: Install necessary packages
   yum:
-    name: '{{ item.package }}'
+    name: '{{ item }}'
     state: present
   with_items: "{{ guacamole_packages_EL }}"
