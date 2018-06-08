@@ -27,4 +27,4 @@
   shell: ldconfig
   args:
     chdir: '{{ guacamole_temp_path }}/server'
-  when: server_installed|changed
+  when: server_installed is changed
